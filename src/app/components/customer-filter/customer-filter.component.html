@@ -1,0 +1,26 @@
+<div class="row justify-content-between pb-3">
+  <div class="col d-flex justify-content-start">
+    {{name | uppercase}}
+  </div>
+  <div class="col d-flex justify-content-end">
+    <button type="button"
+            class="btn btn-primary"
+            (click)="onDiscardFiltersButtonClick()">{{discardFiltersButtonLabel}}</button>
+  </div>
+
+
+
+
+</div>
+
+<div class="container bg-white">
+   Miesto pre Stepy
+</div>
+
+<div class="row pt-3">
+  <div class="col d-flex justify-content-start">
+    <button type="button"
+            class="btn btn-warning"
+            (click)="onApplyFiltersButtonClick()">{{applyFiltersButtonLabel}}</button>
+  </div>
+</div>
