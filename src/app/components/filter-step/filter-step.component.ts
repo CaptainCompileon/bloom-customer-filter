@@ -1,3 +1,5 @@
+import { FilterStep } from './../../models/interfaces/filter-step.model';
+import { FilterService } from './../../services/filter.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -5,12 +7,17 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './filter-step.component.html',
   styleUrls: ['./filter-step.component.scss']
 })
-export class FilterStepComponent implements OnInit {
+export class FilterStepComponent implements OnInit, FilterStep {
 
-  @Input() selectedEvent: any;
-  @Input() eventAttributes?: any[];
+  @Input()
+  selectedEvent: any;
+  eventAttributes?: any[];
 
-  constructor() { }
+
+
+  constructor(filterService: FilterService) {
+    filterService.getEvents()
+  }
 
   ngOnInit(): void {
   }

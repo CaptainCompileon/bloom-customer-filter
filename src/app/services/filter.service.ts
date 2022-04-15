@@ -1,7 +1,8 @@
+import { Filter } from '../models/classes/filter.model';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Event } from '../models/event.model'
 import { EVENTS_MOCK } from './events-mock';
+import { FilterEvent } from '../models/interfaces/event.model';
 
 
 @Injectable({
@@ -9,11 +10,13 @@ import { EVENTS_MOCK } from './events-mock';
 })
 export class FilterService {
 
-  filters: Filter[] = []
+  filters: Filter;
 
-  constructor() { }
+  constructor() {
+    this.filters = new Filter();
+  }
 
-  getEvents(): Observable<Event[]> {
+  getEvents(): Observable<FilterEvent[]> {
     return of(EVENTS_MOCK);
   }
 }

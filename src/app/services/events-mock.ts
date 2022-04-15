@@ -1,6 +1,6 @@
-import { Event } from '../models/event.model'
+import { FilterEvent } from '../models/interfaces/event.model'
 
-export const EVENTS_MOCK: Event[] = [
+export const EVENTS_MOCK: FilterEvent[] = [
   {
     name: 'event1',
     properties: {
