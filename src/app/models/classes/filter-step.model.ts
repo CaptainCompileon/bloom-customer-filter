@@ -1,4 +1,4 @@
-import { EventAttribute } from "./event-attribute.model";
+import { EventAttribute } from "../interfaces/event-attribute.model";
 import { FilterEvent } from "./event.model";
 
 export class FilterStep {

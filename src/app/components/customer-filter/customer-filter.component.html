@@ -14,12 +14,14 @@
 </div>
 
 <div class="container-fluid bg-white">
-    <app-filter-step *ngFor="let item of filterSteps$ | async; index as i" [step]="item"></app-filter-step>
+    <app-filter-step *ngFor="let item of filterSteps$ | async; index as i" [step]="item" [index]="i"></app-filter-step>
     <div class="row pt-3">
         <div class="col d-flex justify-content-center">
-          <button type="button"
-                  class="btn btn-secondary"
-                  (click)="onAddFunnelStepClick()">{{addFunnelStepButtonLabel}}</button>
+            <a routerLink=""
+                class="link link-info"
+                (click)="onAddFunnelStepClick()">
+              {{addFunnelStepButtonLabel | uppercase}}
+            </a>
         </div>
     </div>
 </div>

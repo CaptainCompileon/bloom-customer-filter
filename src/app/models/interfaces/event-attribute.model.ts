@@ -1,7 +1,8 @@
 import { Operation } from "./operation.model";
 
-export interface EventAttribute {
+export class EventAttribute {
   eventPropertyKey?: string;
   operation?: Operation;
-  values?: any[];
+  value1?: any;
+  value2?: any;
 }

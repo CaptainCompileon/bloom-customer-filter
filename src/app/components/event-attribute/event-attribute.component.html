@@ -1,6 +1,5 @@
 
-<div class="col">
-  <div class="container">
+
     <div *ngIf="eventProps" class="row">
       <div class="col-3">
         <ng-select #eventPropertySelect [items]="eventProps"
@@ -20,14 +19,26 @@
                   bindLabel="name"
                   autofocus
                   [searchable]="false"
-                  bindValue="id"
                   [(ngModel)]="eventAttribute.operation"
                   (change)="onOperationSelectedChange()">
                   <ng-template ng-header-tmp>
                       <input #operationsValueFilter style="width: 100%; line-height: 24px" type="text" (input)="operationSelect.filter(operationsValueFilter.value)"/>
                   </ng-template>
         </ng-select>
-      </div>
+      </div >
+      <ng-container *ngIf="eventAttribute.operation" >
+        <div class="col-2" *ngIf="eventAttribute.operation.numberOfInputs >= 1">
+          <input [type]="inputType" [(ngModel)]="eventAttribute.value1" class="form-control">
+        </div>
+        <ng-container *ngIf="eventAttribute.operation.numberOfInputs > 1">
+          <div class="col-1" >
+            <span>and</span>
+          </div>
+          <div class="col-2" >
+            <input [type]="inputType" [(ngModel)]="eventAttribute.value2" class="form-control">
+          </div>
+        </ng-container>
+      </ng-container>
+
     </div>
-  </div>
-</div>
+

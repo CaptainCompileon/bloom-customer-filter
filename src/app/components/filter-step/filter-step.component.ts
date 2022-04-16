@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { FilterStep } from './../../models/interfaces/filter-step.model';
+import { FilterStep } from '../../models/classes/filter-step.model';
 import { FilterService } from './../../services/filter.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { FilterEvent } from 'src/app/models/interfaces/event.model';
+import { FilterEvent } from 'src/app/models/classes/event.model';
 
 @Component({
   selector: 'app-filter-step',
@@ -12,13 +12,14 @@ import { FilterEvent } from 'src/app/models/interfaces/event.model';
 export class FilterStepComponent implements OnInit {
 
   @Input()
+  index!: number;
+  @Input()
   step!: FilterStep;
 
-  readonly addEventAttributeButtonLabel: string = "add event attribute"
-  readonly refineMoreLabel: string = "refine more"
+  readonly addEventAttributeButtonLabel: string = "+ Add event attribute"
+  readonly refineMoreLabel: string = "Refine more"
 
   events$!: Observable<FilterEvent[]>;
-  selectedEvent?: FilterEvent;
 
 
   constructor(private filterService: FilterService) {
@@ -36,5 +37,11 @@ export class FilterStepComponent implements OnInit {
     this.filterService.addEventAttributeToFilterStepWithId(this.step.id)
   }
 
+  onCopyFilterStep() {
+    this.filterService.copyFilterStep(this.step);
+  }
 
+  onDeleteFilterStep() {
+    this.filterService.deleteFilterStep(this.step);
+  }
 }

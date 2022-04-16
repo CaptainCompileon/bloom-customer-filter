@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FilterStep } from 'src/app/models/interfaces/filter-step.model';
+import { FilterStep } from 'src/app/models/classes/filter-step.model';
 import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class CustomerFilterComponent implements OnInit {
 
   constructor(private filterService: FilterService) {
 
-   }
+  }
 
   ngOnInit(): void {
     this.filterService.addFilterStep();
@@ -30,6 +30,7 @@ export class CustomerFilterComponent implements OnInit {
 
   onDiscardFiltersButtonClick() {
     console.log("Discard Filters Clicked!")
+    this.filterService.discardFilters();
   }
 
   onApplyFiltersButtonClick() {

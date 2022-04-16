@@ -1,9 +1,18 @@
   <div class="row">
-    <div class="col">
-      {{step.id + 1}}. Step
+    <div class="col d-flex justify-content-start">
+      {{index + 1}}. Step
     </div>
-    <div class="col">
-      some action buttons...
+    <div class="col d-flex justify-content-end">
+      <a routerLink=""
+          class="link link-info"
+          (click)="onCopyFilterStep()">
+        Copy
+      </a>
+      <a routerLink=""
+          class="link link-info"
+          (click)="onDeleteFilterStep()">
+        Delete
+      </a>
     </div>
   </div>
   <div class="row">
@@ -12,19 +21,19 @@
                 bindLabel="name"
                 autofocus
                 [searchable]="false"
-                [(ngModel)]="selectedEvent"
+                [(ngModel)]="step.selectedEvent"
                 (change)="onEventSelectedChange($event)">
                 <ng-template ng-header-tmp>
                     <input #eventValueFilter style="width: 100%; line-height: 24px" type="text" (input)="eventSelect.filter(eventValueFilter.value)"/>
                 </ng-template>
       </ng-select>
     </div>
-    <div class="col-10" *ngIf="selectedEvent">
+    <div class="col-10" *ngIf="step.selectedEvent">
         <app-event-attribute *ngFor="let item of step.eventAttributes; index as i"
-                              [event]="selectedEvent"
+                              [event]="step.selectedEvent"
                               [eventAttribute]="item"></app-event-attribute>
                               <a routerLink=""
-                                 class="link-info"
+                                 class="link link-info"
                                  (click)="onAddEventAttribute()">
                                 {{(step.eventAttributes.length < 1) ? addEventAttributeButtonLabel : refineMoreLabel}}
                               </a>

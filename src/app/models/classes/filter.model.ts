@@ -1,4 +1,4 @@
-import { FilterStep } from "../interfaces/filter-step.model";
+import { FilterStep } from "./filter-step.model";
 
 export class Filter {
 
