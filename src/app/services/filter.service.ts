@@ -1,3 +1,4 @@
+import { FilterStep } from './../models/interfaces/filter-step.model';
 import { Filter } from '../models/classes/filter.model';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
@@ -10,13 +11,30 @@ import { FilterEvent } from '../models/interfaces/event.model';
 })
 export class FilterService {
 
-  filters: Filter;
+  private filter: Filter;
 
   constructor() {
-    this.filters = new Filter();
+    this.filter = new Filter();
   }
 
-  getEvents(): Observable<FilterEvent[]> {
+  get Filter(): Filter {
+    return this.filter;
+  }
+
+  get Events(): Observable<FilterEvent[]> {
     return of(EVENTS_MOCK);
+  }
+
+  get FilterSteps(): Observable<FilterStep[]> {
+    return of(this.filter.filterSteps);
+  }
+
+  addFilterStep(filterStep: FilterStep) {
+    let index = this.filter.filterSteps?.push(filterStep) - 1;
+    return index;
+  }
+
+  updateFilterStep(index: number) {
+    /* Update Filter step with index */
   }
 }

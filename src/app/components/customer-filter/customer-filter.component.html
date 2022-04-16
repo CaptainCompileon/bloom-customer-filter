@@ -14,7 +14,14 @@
 </div>
 
 <div class="container bg-white">
-   Miesto pre Stepy
+    <app-filter-step *ngFor="let item of filterSteps$ | async; index as i" [index]="i + 1"></app-filter-step>
+    <div class="row pt-3">
+        <div class="col d-flex justify-content-center">
+          <button type="button"
+                  class="btn btn-secondary"
+                  (click)="onAddFunnelStepClick()">{{addFunnelStepButtonLabel}}</button>
+        </div>
+    </div>
 </div>
 
 <div class="row pt-3">

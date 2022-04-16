@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Filter } from 'src/app/models/classes/filter.model';
+import { FilterStep } from 'src/app/models/interfaces/filter-step.model';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
   selector: 'app-customer-filter',
@@ -10,10 +14,19 @@ export class CustomerFilterComponent implements OnInit {
   readonly name: string = "Customer filter"
   readonly discardFiltersButtonLabel: string = "Discard filters"
   readonly applyFiltersButtonLabel: string = "Apply filters"
+  readonly addFunnelStepButtonLabel: string = "Add funell step"
 
-  constructor() { }
+  filterSteps$!: Observable<FilterStep[]>;
+
+
+  constructor(private filterService: FilterService) {
+
+   }
 
   ngOnInit(): void {
+    this.filterService.addFilterStep({});
+    this.filterSteps$ = this.filterService.FilterSteps
+
   }
 
   onDiscardFiltersButtonClick() {
@@ -22,6 +35,11 @@ export class CustomerFilterComponent implements OnInit {
 
   onApplyFiltersButtonClick() {
     console.log("Apply Filters Clicked!")
+  }
+
+  onAddFunnelStepClick() {
+    console.log("Add Funnel Step Clicked!")
+    this.filterService.addFilterStep({});
   }
 
 }

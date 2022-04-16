@@ -1,1 +1,51 @@
-<p>filter-step works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {{index}}. Step
+    </div>
+    <div class="col">
+      some action buttons...
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ng-select #eventSelect [items]="events$ | async"
+                bindLabel="name"
+                autofocus
+                [searchable]="false"
+                bindValue="id"
+                [(ngModel)]="selectedEventId"
+                (change)="onEventSelectedChange()">
+                <ng-template ng-header-tmp>
+                    <input #eventValueFilter style="width: 100%; line-height: 24px" type="text" (input)="eventSelect.filter(eventValueFilter.value)"/>
+                </ng-template>
+      </ng-select>
+    </div>
+    <div class="col">
+        <ng-select #eventPropertySelect [items]="events$ | async"
+                  bindLabel="name"
+                  autofocus
+                  [searchable]="false"
+                  bindValue="id"
+                  [(ngModel)]="selectedEventPropertyId"
+                  (change)="onEventPropertySelectedChange()">
+                  <ng-template ng-header-tmp>
+                      <input #eventPropertyValueFilter style="width: 100%; line-height: 24px" type="text" (input)="eventPropertySelect.filter(eventPropertyValueFilter.value)"/>
+                  </ng-template>
+        </ng-select>
+      </div>
+    <div class="col">
+        <ng-select #operationSelect [items]="events$ | async"
+                  bindLabel="name"
+                  autofocus
+                  [searchable]="false"
+                  bindValue="id"
+                  [(ngModel)]="selectedOperationId"
+                  (change)="onOperationSelectedChange()">
+                  <ng-template ng-header-tmp>
+                      <input #operationsValueFilter style="width: 100%; line-height: 24px" type="text" (input)="operationSelect.filter(operationsValueFilter.value)"/>
+                  </ng-template>
+        </ng-select>
+      </div>
+    </div>
+</div>
