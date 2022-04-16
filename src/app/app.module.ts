@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerFilterComponent } from './components/customer-filter/customer-filter.component';
 import { FilterStepComponent } from './components/filter-step/filter-step.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { FilterStepComponent } from './components/filter-step/filter-step.compon
   ],
   imports: [
     BrowserModule,
-    NgbModule
+    NgbModule,
+    NgSelectModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
