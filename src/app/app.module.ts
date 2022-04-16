@@ -7,12 +7,14 @@ import { CustomerFilterComponent } from './components/customer-filter/customer-f
 import { FilterStepComponent } from './components/filter-step/filter-step.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { EventAttributeComponent } from './components/event-attribute/event-attribute.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerFilterComponent,
-    FilterStepComponent
+    FilterStepComponent,
+    EventAttributeComponent
   ],
   imports: [
     BrowserModule,

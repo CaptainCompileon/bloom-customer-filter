@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Filter } from 'src/app/models/classes/filter.model';
 import { FilterStep } from 'src/app/models/interfaces/filter-step.model';
 import { FilterService } from 'src/app/services/filter.service';
 
@@ -24,7 +23,7 @@ export class CustomerFilterComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.filterService.addFilterStep({});
+    this.filterService.addFilterStep();
     this.filterSteps$ = this.filterService.FilterSteps
 
   }
@@ -35,11 +34,12 @@ export class CustomerFilterComponent implements OnInit {
 
   onApplyFiltersButtonClick() {
     console.log("Apply Filters Clicked!")
+    console.log(this.filterService.Filter);
   }
 
   onAddFunnelStepClick() {
     console.log("Add Funnel Step Clicked!")
-    this.filterService.addFilterStep({});
+    this.filterService.addFilterStep();
   }
 
 }

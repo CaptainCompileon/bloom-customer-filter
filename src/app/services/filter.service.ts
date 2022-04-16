@@ -1,3 +1,6 @@
+import { EventAttribute } from './../models/interfaces/event-attribute.model';
+import { OPERATIONS_MOCK } from './operations-mock';
+import { Operation } from './../models/interfaces/operation.model';
 import { FilterStep } from './../models/interfaces/filter-step.model';
 import { Filter } from '../models/classes/filter.model';
 import { Injectable } from '@angular/core';
@@ -12,6 +15,7 @@ import { FilterEvent } from '../models/interfaces/event.model';
 export class FilterService {
 
   private filter: Filter;
+  newfilterStepId: number = 0;
 
   constructor() {
     this.filter = new Filter();
@@ -29,9 +33,32 @@ export class FilterService {
     return of(this.filter.filterSteps);
   }
 
-  addFilterStep(filterStep: FilterStep) {
-    let index = this.filter.filterSteps?.push(filterStep) - 1;
-    return index;
+  get FilterOperations(): Observable<Operation[]> {
+    return of(OPERATIONS_MOCK);
+  }
+
+  getFilterStepEvent(filterStepId: number): FilterEvent | undefined {
+    let filterStep = this.filter.filterSteps.find((filterStep) => filterStep.id === filterStepId)
+    return filterStep?.selectedEvent;
+  }
+
+  getFilterStep(filterStepId: number): FilterStep | undefined {
+    let filterStep = this.filter.filterSteps.find((filterStep) => filterStep.id === filterStepId)
+    return filterStep;
+  }
+
+  setFilterStepEvent(filterStepId: number, selectedEvent: FilterEvent) {
+    this.filter.filterSteps[filterStepId].selectedEvent = selectedEvent;
+  }
+
+  addFilterStep() {
+    let filterStep = this.filter.filterSteps?.push(new FilterStep(this.newfilterStepId++));
+    return filterStep;
+  }
+
+  addEventAttributeToFilterStepWithId(filterStepId: number) {
+    let filterStep = this.getFilterStep(filterStepId);
+    filterStep?.eventAttributes?.push({});
   }
 
   updateFilterStep(index: number) {

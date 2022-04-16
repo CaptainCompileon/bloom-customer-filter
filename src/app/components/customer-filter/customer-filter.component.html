@@ -13,8 +13,8 @@
 
 </div>
 
-<div class="container bg-white">
-    <app-filter-step *ngFor="let item of filterSteps$ | async; index as i" [index]="i + 1"></app-filter-step>
+<div class="container-fluid bg-white">
+    <app-filter-step *ngFor="let item of filterSteps$ | async; index as i" [step]="item"></app-filter-step>
     <div class="row pt-3">
         <div class="col d-flex justify-content-center">
           <button type="button"

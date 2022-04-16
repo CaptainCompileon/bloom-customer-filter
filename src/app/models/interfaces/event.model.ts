@@ -1,5 +1,5 @@
-export interface FilterEvent {
-  id: number;
-  name: string;
+export class FilterEvent {
+  id!: number;
+  name!: string;
   properties: any;
 }

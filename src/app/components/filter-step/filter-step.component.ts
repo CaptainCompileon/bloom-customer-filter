@@ -9,36 +9,32 @@ import { FilterEvent } from 'src/app/models/interfaces/event.model';
   templateUrl: './filter-step.component.html',
   styleUrls: ['./filter-step.component.scss']
 })
-export class FilterStepComponent implements OnInit, FilterStep {
+export class FilterStepComponent implements OnInit {
 
   @Input()
-  index!: number;
+  step!: FilterStep;
 
-  eventAttributes?: any[];
-  events$: Observable<FilterEvent[]>;
-  selectedEventId?: number;
-  selectedEventPropertyId?: number;
-  selectedOperationId?: number;
+  readonly addEventAttributeButtonLabel: string = "add event attribute"
+  readonly refineMoreLabel: string = "refine more"
+
+  events$!: Observable<FilterEvent[]>;
+  selectedEvent?: FilterEvent;
 
 
-
-  constructor(filterService: FilterService) {
-    this.events$ = filterService.Events
+  constructor(private filterService: FilterService) {
   }
 
   ngOnInit(): void {
+    this.events$ = this.filterService.Events;
   }
 
-  onEventSelectedChange() {
-
+  onEventSelectedChange(value: any) {
+    console.log(value)
   }
 
-  onEventPropertySelectedChange() {
-
+  onAddEventAttribute() {
+    this.filterService.addEventAttributeToFilterStepWithId(this.step.id)
   }
 
-  onOperationSelectedChange() {
-
-  }
 
 }

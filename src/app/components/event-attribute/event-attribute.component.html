@@ -1,0 +1,33 @@
+
+<div class="col">
+  <div class="container">
+    <div *ngIf="eventProps" class="row">
+      <div class="col-3">
+        <ng-select #eventPropertySelect [items]="eventProps"
+                  bindLabel="name"
+                  autofocus
+                  [searchable]="false"
+                  bindValue="id"
+                  [(ngModel)]="eventAttribute.eventPropertyKey"
+                  (change)="onEventPropertySelectedChange()">
+                  <ng-template ng-header-tmp>
+                      <input #eventPropertyValueFilter style="width: 100%; line-height: 24px" type="text" (input)="eventPropertySelect.filter(eventPropertyValueFilter.value)"/>
+                  </ng-template>
+        </ng-select>
+      </div>
+      <div class="col-2" *ngIf="eventAttribute.eventPropertyKey">
+        <ng-select #operationSelect [items]="operations$ | async"
+                  bindLabel="name"
+                  autofocus
+                  [searchable]="false"
+                  bindValue="id"
+                  [(ngModel)]="eventAttribute.operation"
+                  (change)="onOperationSelectedChange()">
+                  <ng-template ng-header-tmp>
+                      <input #operationsValueFilter style="width: 100%; line-height: 24px" type="text" (input)="operationSelect.filter(operationsValueFilter.value)"/>
+                  </ng-template>
+        </ng-select>
+      </div>
+    </div>
+  </div>
+</div>
