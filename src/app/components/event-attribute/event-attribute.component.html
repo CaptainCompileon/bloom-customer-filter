@@ -1,6 +1,4 @@
-
-
-    <div *ngIf="eventProps" class="row">
+    <div *ngIf="eventProps" class="row pb-2">
       <div class="col-3">
         <ng-select #eventPropertySelect [items]="eventProps"
                   bindLabel="name"
@@ -31,8 +29,8 @@
           <input [type]="inputType" [(ngModel)]="eventAttribute.value1" class="form-control">
         </div>
         <ng-container *ngIf="eventAttribute.operation.numberOfInputs > 1">
-          <div class="col-1" >
-            <span>and</span>
+          <div class="col-1 d-inline-flex align-items-center justify-content-center" >
+            and
           </div>
           <div class="col-2" >
             <input [type]="inputType" [(ngModel)]="eventAttribute.value2" class="form-control">
