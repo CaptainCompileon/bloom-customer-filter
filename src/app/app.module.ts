@@ -8,6 +8,7 @@ import { FilterStepComponent } from './components/filter-step/filter-step.compon
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { EventAttributeComponent } from './components/event-attribute/event-attribute.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EventAttributeComponent } from './components/event-attribute/event-attr
     BrowserModule,
     NgbModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,6 +3,9 @@ import { FilterStep } from '../../models/classes/filter-step.model';
 import { FilterService } from './../../services/filter.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FilterEvent } from 'src/app/models/classes/event.model';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-filter-step',
@@ -10,6 +13,7 @@ import { FilterEvent } from 'src/app/models/classes/event.model';
   styleUrls: ['./filter-step.component.scss']
 })
 export class FilterStepComponent implements OnInit {
+
 
   @Input()
   index!: number;
@@ -21,6 +25,8 @@ export class FilterStepComponent implements OnInit {
 
   events$!: Observable<FilterEvent[]>;
 
+  faCopy = faCopy;
+  faTrash = faTrash;
 
   constructor(private filterService: FilterService) {
   }

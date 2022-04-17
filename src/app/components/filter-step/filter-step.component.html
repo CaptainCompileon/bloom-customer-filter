@@ -5,14 +5,16 @@
     </div>
     <div class="col d-flex justify-content-end">
       <a routerLink=""
-          class="link text-info"
+          class="pr-1 text-muted"
+          data-toggle="tooltip" data-placement="top" title="Tooltip on top"
           (click)="onCopyFilterStep()">
-        <i class="fas fa-clone"></i>
+        <fa-icon [icon]="faCopy"></fa-icon>
       </a>
       <a routerLink=""
-          class="link text-info"
+          data-toggle="tooltip" data-placement="top" title="Tooltip on top"
+          class="pr-1 text-muted"
           (click)="onDeleteFilterStep()">
-        <i class="fas fa-trash"></i>
+        <fa-icon [icon]="faTrash"></fa-icon>
       </a>
     </div>
   </div>
